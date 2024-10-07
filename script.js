@@ -61,19 +61,12 @@ app.get('/shoes', (req, res) => {
     res.send(maxArr)
   }
   else if (type) {
-    let typeArr = []
-    shoes.forEach(item => {
-      if(item.type == type) {
-        console.log(item)
-        typeArr.push(item)
-      }
-    })
-    if(typeArr.length) {
+    let typeArr = shoes.filter(item => item.type == type)
+    if (typeArr.length) {
       res.send(typeArr)
     } else {
       res.send('This type of shoe is not available')
     }
-    
   }
   else {
     res.send(shoes)
